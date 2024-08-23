@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="" >
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Meta Responsive tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Favicon Icon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--Custom style.css-->
+    <link rel="stylesheet" href="assets/css/quicksand.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+
+    <title>Detail Alumni - SIM Daftar Alumni</title>
+  </head>
+  <body>
+    <!--Page loader-->
+    <div class="loader-wrapper">
+        <div class="loader-circle">
+            <div class="loader-wave"></div>
+        </div>
+    </div>
+    <!--Page loader-->
+    
+    <!--Page Wrapper-->
+    <div class="container-fluid">
+
+        <!--Header-->
+        <div class="row header shadow-sm">
+            <!--Logo-->
+            <div class="col-sm-3 pl-0 text-center header-logo">
+               <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
+                    <h3 class="logo"><a href="#" class="text-secondary logo"><i class="fa fa-rocket"></i> Sim Alumni <span class="small">admin</span></a></h3>
+               </div>
+            </div>
+            <!--Logo-->
+
+            <!--Header Menu-->
+            <div class="col-sm-9 header-menu pt-2 pb-0">
+                <div class="row">
+                    <!--Menu Icons-->
+                    <!--Search box and avatar-->
+                </div>    
+            </div>
+            <!--Header Menu-->
+        </div>
+        <!--Header-->
+
+        <!--Main Content-->
+        <div class="row main-content">
+            <!--Sidebar left-->
+            <div class="col-sm-3 col-xs-6 sidebar pl-0">
+                <div class="inner-sidebar mr-3">
+                    <!--Image Avatar-->
+                    <div class="avatar text-center">
+                        <img src="assets/img/admin3.jpeg" alt="" class="rounded-circle" />
+                        <p><strong>Kemas</strong></p>
+                        
+                    </div>
+                    <!--Image Avatar-->
+
+                    <!--Sidebar Navigation Menu-->
+                    <div class="sidebar-menu-container">
+                        <ul class="sidebar-menu mt-4 mb-4">
+                            <li class="parent">
+                                <a href="index.html"><i class="fa fa-tachometer mr-3"> </i>
+                                    <span class="none">Dashboard</span>
+                                </a>
+                            </li>
+                            <li class="parent">
+                                <a href="data-alumni.html"><i class="fa fa-graduation-cap mr-3"> </i>
+                                    <span class="none">Data Alumni</span>
+                                </a>
+                            </li>
+                            <!-- ... (menu lainnya) ... -->
+                        </ul>
+                    </div>
+                    <!--Sidebar Naigation Menu-->
+                </div>
+            </div>
+            <!--Sidebar left-->
+
+            <!--Content right-->
+            <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
+                <h5 class="mb-3"><strong>Detail Alumni</strong></h5>
+                
+                <div class="mt-4 mb-4 p-3 bg-white border shadow-sm lh-sm">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <img src="assets/img/dataalumi/satu.jpeg" alt="Alumni Photo" class="img-fluid rounded-circle mb-3" id="alumniPhoto">
+                        </div>
+                        <div class="col-md-9">
+                            <h4 id="alumniName">Nama Alumni</h4>
+                            <p><strong>Angkatan:</strong> <span id="alumniAngkatan">2020</span></p>
+                            <p><strong>Jurusan:</strong> <span id="alumniJurusan">IPA</span></p>
+                            <p><strong>ID:</strong> <span id="alumniId">1</span></p>
+                            <p><strong>Status:</strong> <span id="alumniStatus" class="badge badge-success">Aktif</span></p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <h5>Riwayat Aktivitas</h5>
+                            <ul id="activityList" class="list-group">
+                                <li class="list-group-item">Login terakhir: 2 jam yang lalu</li>
+                                <li class="list-group-item">Menambahkan data alumni: 1 hari yang lalu</li>
+                                <li class="list-group-item">Mengubah profil: 3 hari yang lalu</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row mt-3">
+                        <div class="col-md-12">
+                            <a href="data-alumni.html" class="btn btn-secondary">Kembali</a>
+                            <button class="btn btn-primary" onclick="editAlumni()">Edit Alumni</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Content right-->
+        </div>
+        <!--Main Content-->
+
+    </div>
+    <!--Page Wrapper-->
+
+    <!-- Page JavaScript Files-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <!--Popper JS-->
+    <script src="assets/js/popper.min.js"></script>
+    <!--Bootstrap-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--Custom Js Script-->
+    <script src="assets/js/custom.js"></script>
+    <script>
+        // Fungsi untuk mengambil parameter dari URL
+        function getUrlParameter(name) {
+            name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+            var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+            var results = regex.exec(location.search);
+            return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        }
+
+        // Data alumni (contoh)
+        const alumniData = [
+            { id: 1, nama: "Alumni 1", angkatan: 2020, jurusan: "IPA", foto: "satu.jpeg" },
+            { id: 2, nama: "Alumni 2", angkatan: 2019, jurusan: "IPS", foto: "dua.jpeg" },
+            { id: 3, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "tiga.jpeg" },
+            { id: 4, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "empat.jpeg" },
+            { id: 5, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "lima.jpeg" },
+            { id: 6, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "enam.jpeg" },
+            { id: 7, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "tuju.jpeg" },
+            { id: 8, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "delapan.jpeg" },
+            { id: 9, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "sembilan.jpeg" },
+            { id: 10, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "sepuluh.jpeg" },
+            { id: 11, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "sebelas.jpeg" },
+            { id: 12, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "duabelas.jpeg" },
+            { id: 13, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "tigabelas.jpeg" },
+            { id: 14, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "empatbelas.jpeg" },
+            { id: 15, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "limabelas.jpeg" },
+            { id: 16, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "enambelas.jpeg" },
+            { id: 17, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "tujubelas.jpeg" },
+            { id: 18, nama: "Alumni 3", angkatan: 2018, jurusan: "Bahasa", foto: "lapanbelas.jpeg" },
+            // ... (data lainnya) ...
+        ];
+
+        // Fungsi untuk mengisi data alumni
+        function populateAlumniData(alumniData) {
+            document.getElementById('alumniPhoto').src = `assets/img/dataalumi/${alumniData.foto}`;
+            document.getElementById('alumniName').textContent = alumniData.nama;
+            document.getElementById('alumniAngkatan').textContent = alumniData.angkatan;
+            document.getElementById('alumniJurusan').textContent = alumniData.jurusan;
+            document.getElementById('alumniId').textContent = alumniData.id;
+        }
+
+        // Fungsi untuk mengedit alumni
+        function editAlumni() {
+            var alumniId = getUrlParameter('id');
+            window.location.href = 'edit-alumni.html?id=' + alumniId;
+        }
+
+        // Ketika halaman dimuat
+        document.addEventListener('DOMContentLoaded', function() {
+            var alumniId = parseInt(getUrlParameter('id'));
+            // Cari data alumni berdasarkan ID
+            var alumni = alumniData.find(a => a.id === alumniId);
+            
+            if (alumni) {
+                populateAlumniData(alumni);
+            } else {
+                alert('Data alumni tidak ditemukan');
+                window.location.href = 'data-alumni.html';
+            }
+        });
+    </script>
+  </body>
+</html>

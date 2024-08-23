@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="" >
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Meta Responsive tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon Icon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Custom style.css -->
+    <link rel="stylesheet" href="assets/css/quicksand.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+
+    <!-- Chartist CSS -->
+    <link rel="stylesheet" href="assets/css/chartist.min.css">
+
+    <!-- Map -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.2.css">
+
+    <!-- Bootstrap Calendar -->
+    <link rel="stylesheet" href="assets/js/calendar/bootstrap_calendar.css">
+
+    <!-- Nice select -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+    <title>SIM Daftar Alumni</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            height: 60px;
+        }
+
+        .main-content {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 25%;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            top: 40px;
+            left: 0;
+            bottom: 0;
+            background-color: #f8f9fa;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .content {
+            flex-grow: 1;
+            margin-left: 25%;
+            padding: 75px 15px 60px;
+            height: 100vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 25%;
+            right: 0;
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            border-top: 1px solid #dee2e6;
+            height: 50px;
+        }
+
+        @media (max-width: 767px) {
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+            }
+            .content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+            .footer {
+                left: 0;
+            }
+        }
+
+        .sidebar-menu-container {
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+        }
+        
+        .sidebar-menu {
+            flex-grow: 1;
+        }
+        
+        .btn-logout {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            margin: 10px auto;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 80%;
+            max-width: 150px;
+        }
+        
+        .btn-logout:hover {
+            background-color: #d32f2f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .btn-logout i {
+            margin-right: 8px;
+        }
+
+        
+    </style>
+  </head>
+  <body>
+    <!-- Page loader -->
+    <div class="loader-wrapper">
+        <div class="loader-circle">
+            <div class="loader-wave"></div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header shadow-sm">
+        <!-- Logo -->
+        <div class="col-sm-3 pl-0 text-center header-logo">
+           <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
+                <h3 class="logo"><a href="#" class="text-secondary logo"><i class="fa fa-rocket"></i> Sim Alumni <span class="small">admin</span></a></h3>
+           </div>
+        </div>
+
+        <!-- Header Menu -->
+        <div class="col-sm-9 header-menu pt-2 pb-0">
+            <div class="row">
+                <!-- Menu Icons -->
+                <!-- Search box and avatar -->
+            </div>    
+        </div>
+    </div>
+    <!-- Header -->
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Sidebar left -->
+        <div class="sidebar pl-0">
+            <div class="inner-sidebar mr-3">
+                <!-- Avatar in Sidebar -->
+                <div class="avatar text-center">
+                    <img src="assets/img/admin3.jpeg" alt="" class="rounded-circle" />
+                    <p><strong>Kemas</strong></p>
+                    
+                </div>
+
+                <!-- Sidebar Navigation Menu -->
+                <div class="sidebar-menu-container">
+                    <ul class="sidebar-menu mt-4 mb-4">
+                        <li class="parent">
+                            <a href="index.html"><i class="fa fa-tachometer mr-3"> </i><span class="none">Dashboard</span></a>
+                        </li>
+                        <li class="parent">
+                            <a href="data-admin.html"><i class="fa fa-user mr-3"> </i><span class="none">Data Admin</span></a>
+                        </li>
+                        <li class="parent">
+                            <a href="data-user.html"><i class="fa fa-users mr-3"> </i><span class="none">Data User</span></a>
+                        </li>
+                        <li class="parent">
+                            <a href="data-alumni.html"><i class="fa fa-graduation-cap mr-3"> </i><span class="none">Data Alumni</span></a>
+                        </li>
+                        <li class="parent">
+                            <a href="album-alumni.html"><i class="fa fa-image mr-3"> </i><span class="none">Album alumni</span></a>
+                        </li>
+                    </ul>
+                    <a href="landingpage.html" class="btn-logout text-white">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                </div>
+                <!-- Sidebar Navigation Menu -->
+            </div>
+        </div>
+        <!-- Sidebar left -->
+
+        <!-- Content right -->
+        <div class="content pt-10 pl-0">
+            <h5 class="mb-3"><strong>Dashboard</strong></h5>
+
+            <!-- Dashboard widget -->
+            <div class="mt-1 mb-3 button-container">
+                <div class="row pl-0">
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
+                        <div class="bg-white border shadow" id="totalAdmin">
+                            <div class="media p-4">
+                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-theme">
+                                    <i class="fa fa-user"></i>
+                                </div>
+                                <div class="media-body pl-2">
+                                    <h3 class="mt-0 mb-0"><strong>2</strong></h3>
+                                    <p><small class="text-muted bc-description">Total Admin</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-5 col-sm-6 col-12 mb-1">
+                        <div class="bg-white border shadow" id="totalAlumni">
+                            <div class="media p-4">
+                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-danger">
+                                    <i class="fa fa-graduation-cap"> </i>
+                                </div>
+                                <div class="media-body pl-2">
+                                    <h3 class="mt-0 mb-0"><strong>18</strong></h3>
+                                    <p><small class="text-muted bc-description">Total Alumni</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-sm-6 col-12 mb-3">
+                        <div class="bg-theme border shadow" id="totalUser">
+                            <div class="media p-4">
+                                <div class="align-self-center mr-3 rounded-circle notify-icon bg-white">
+                                    <i class="fa fa-users text-theme"></i>
+                                </div>
+                                <div class="media-body pl-2">
+                                    <h3 class="mt-0 mb-0"><strong>3</strong></h3>
+                                    <p><small class="bc-description text-white">Total User</small></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /Dashboard widget -->
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm">
+                        <h6 class="mb-3">Statistik Data</h6>
+                        <canvas id="dataChart"></canvas>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="mt-1 mb-3 p-3 button-container bg-white border shadow-sm">
+                        <h6 class="mb-3">Pekerjaan Alumni</h6>
+                        <canvas id="pieChart"></canvas>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+        
+    
+
+        <!-- Content right -->
+    </div>
+    <!-- Main Content -->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2024 SIM Daftar Alumni. Hak Cipta Dilindungi.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline float-md-right">
+                        <li class="list-inline-item"><a href="#">Kebijakan Privasi</a></li>
+                        <li class="list-inline-item"><a href="#">Syarat dan Ketentuan</a></li>
+                        <li class="list-inline-item"><a href="#">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Page JavaScript Files -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <script src="assets/js/popper.min.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/sweetalert.js"></script>
+    <script src="assets/js/progressbar.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.pie.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.categories.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.stack.min.js"></script>
+    <script src="assets/js/charts/chartist.min.js"></script>
+    <script src="assets/js/charts/chartist-data.js"></script>
+    <script src="assets/js/charts/demo.js"></script>
+    <script src="assets/js/maps/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/js/maps/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/js/maps/jvector-maps.js"></script>
+    <script src="assets/js/calendar/bootstrap_calendar.js"></script>
+    <script src="assets/js/calendar/demo.js"></script>
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+
+    <!-- Custom Js Script -->
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Ambil data dari widget
+    const totalAdmin = parseInt(document.querySelector('#totalAdmin .media-body strong').textContent);
+    const totalAlumni = parseInt(document.querySelector('#totalAlumni .media-body strong').textContent);
+    const totalUser = parseInt(document.querySelector('#totalUser .media-body strong').textContent);
+
+    // Buat diagram batang
+    const ctxBar = document.getElementById('dataChart').getContext('2d');
+    try {
+        new Chart(ctxBar, {
+            type: 'bar',
+            data: {
+                labels: ['Admin', 'Alumni', 'User'],
+                datasets: [{
+                    label: 'Jumlah Data',
+                    data: [totalAdmin, totalAlumni, totalUser],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            stepSize: 1
+                        }
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Statistik Data SIM Alumni'
+                    },
+                    datalabels: {
+                        anchor: 'end',
+                        align: 'top',
+                        formatter: Math.round,
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutBounce'
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error creating bar chart:', error);
+    }
+
+    // Buat diagram bulat
+    const ctxPie = document.getElementById('pieChart').getContext('2d');
+    try {
+        new Chart(ctxPie, {
+            type: 'pie',
+            data: {
+                labels: ['PNS', 'Wiraswasta', 'BUMN'],
+                datasets: [{
+                    data: [PNS, Wiraswasta, BUMN],
+                    backgroundColor: [
+                        'rgba(75, 192, 192, 0.6)',
+                        'rgba(255, 99, 132, 0.6)',
+                        'rgba(54, 162, 235, 0.6)'
+                    ],
+                    borderColor: [
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                responsive: true,
+                plugins: {
+                    legend: {
+                        position: 'top',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Distribusi Data SIM Alumni'
+                    },
+                    datalabels: {
+                        formatter: (value, ctx) => {
+                            let sum = 0;
+                            let dataArr = ctx.chart.data.datasets[0].data;
+                            dataArr.map(data => {
+                                sum += data;
+                            });
+                            let percentage = (value * 100 / sum).toFixed(2) + "%";
+                            return percentage;
+                        },
+                        color: '#fff',
+                        font: {
+                            weight: 'bold'
+                        }
+                    }
+                },
+                animation: {
+                    duration: 2000,
+                    easing: 'easeOutBounce'
+                }
+            }
+        });
+    } catch (error) {
+        console.error('Error creating pie chart:', error);
+    }
+});
+
+    </script>
+    
+    </script>
+  </body>
+</html>

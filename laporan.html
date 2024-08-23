@@ -1,0 +1,107 @@
+<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Laporan Statistik Alumni</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 20px;
+            background-color: white;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        .statistics {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+        .stat-box {
+            flex: 1;
+            padding: 20px;
+            text-align: center;
+            background-color: #e7e7e7;
+            margin: 0 10px;
+            border-radius: 8px;
+        }
+        .stat-box h2 {
+            font-size: 36px;
+            margin: 0;
+            color: #007bff;
+        }
+        .stat-box p {
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .chart {
+            width: 100%;
+            height: 400px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Laporan Statistik Alumni</h1>
+
+    <div class="statistics">
+        <div class="stat-box">
+            <h2>1,234</h2>
+            <p>Total Alumni Terdaftar</p>
+        </div>
+        <div class="stat-box">
+            <h2>567</h2>
+            <p>Bekerja di Bidang Teknologi</p>
+        </div>
+        <div class="stat-box">
+            <h2>210</h2>
+            <p>Melanjutkan Studi</p>
+        </div>
+    </div>
+
+    <div class="chart">
+        <canvas id="alumniChart"></canvas>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('alumniChart').getContext('2d');
+    const alumniChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['Teknologi', 'Pendidikan', 'Bisnis', 'Kesehatan', 'Lainnya'],
+            datasets: [{
+                label: 'Jumlah Alumni per Bidang',
+                data: [567, 210, 156, 123, 178],
+                backgroundColor: [
+                    '#007bff',
+                    '#28a745',
+                    '#ffc107',
+                    '#dc3545',
+                    '#6c757d'
+                ]
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        }
+    });
+</script>
+
+</body>
+</html>

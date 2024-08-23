@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="" >
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Meta Responsive tag -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Favicon Icon -->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
+    <!-- Custom style.css -->
+    <link rel="stylesheet" href="assets/css/quicksand.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+
+    <!-- Chartist CSS -->
+    <link rel="stylesheet" href="assets/css/chartist.min.css">
+
+    <!-- Map -->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.2.css">
+
+    <!-- Bootstrap Calendar -->
+    <link rel="stylesheet" href="assets/js/calendar/bootstrap_calendar.css">
+
+    <!-- Nice select -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.0.0"></script>
+
+    <title>SIM Daftar Alumni</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            height: 60px;
+        }
+
+        .main-content {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 25%;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            top: 40px;
+            left: 0;
+            bottom: 0;
+            background-color: #f8f9fa;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .content {
+            flex-grow: 1;
+            margin-left: 25%;
+            padding: 75px 15px 60px;
+            height: 100vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 25%;
+            right: 0;
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            border-top: 1px solid #dee2e6;
+            height: 50px;
+        }
+
+        @media (max-width: 767px) {
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+            }
+            .content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+            .footer {
+                left: 0;
+            }
+        }
+
+        .sidebar-menu-container {
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+        }
+        
+        .sidebar-menu {
+            flex-grow: 1;
+        }
+        
+        .btn-logout {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            margin: 10px auto;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 80%;
+            max-width: 150px;
+        }
+        
+        .btn-logout:hover {
+            background-color: #d32f2f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+        
+        .btn-logout i {
+            margin-right: 8px;
+        }
+    </style>
+  </head>
+  <body>
+    <!-- Page loader -->
+    <div class="loader-wrapper">
+        <div class="loader-circle">
+            <div class="loader-wave"></div>
+        </div>
+    </div>
+    
+    <!-- Header -->
+    <div class="header shadow-sm">
+        <!-- Logo -->
+        <div class="col-sm-3 pl-0 text-center header-logo">
+           <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
+                <h3 class="logo"><a href="#" class="text-secondary logo"><i class="fa fa-rocket"></i> Sim Alumni <span class="small">admin</span></a></h3>
+           </div>
+        </div>
+
+        <!-- Header Menu -->
+        <div class="col-sm-9 header-menu pt-2 pb-0">
+            <div class="row">
+                <!-- Menu Icons -->
+                <!-- Search box and avatar -->
+            </div>    
+        </div>
+    </div>
+    <!-- Header -->
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Sidebar left -->
+        <div class="sidebar pl-0">
+            <div class="inner-sidebar mr-3">
+                <!-- Avatar in Sidebar -->
+                <div class="avatar text-center">
+                    <img src="assets/img/admin3.jpeg" alt="" class="rounded-circle" />
+                    <p><strong>Kemas</strong></p>
+                    
+                </div>
+
+                <!-- Sidebar Navigation Menu -->
+                <div class="sidebar-menu-container">
+                    <ul class="sidebar-menu mt-4 mb-4">
+                        <li class="parent">
+                            <a href="index.html"><i class="fa fa-tachometer mr-3"> </i><span class="none">Dashboard</span></a>
+                        </li>
+                        <li class="parent">
+                            <a href="data-admin.html"><i class="fa fa-user mr-3"> </i><span class="none">Data Admin</span></a>
+                        </li>
+                        <li class="parent">
+                            <a href="data-user.html"><i class="fa fa-users mr-3"> </i><span class="none">Data User</span></a>
+                        </li>
+                        <li class="parent">
+                            <a href="data-alumni.html"><i class="fa fa-graduation-cap mr-3"> </i><span class="none">Data Alumni</span></a>
+                        </li>
+                        <li class="parent">
+                            <a href="album-alumni.html"><i class="fa fa-image mr-3"> </i><span class="none">Album alumni</span></a>
+                        </li>
+                    </ul>
+                    <a href="login.html" class="btn-logout text-white">
+                        <i class="fas fa-sign-out-alt"></i>Logout
+                    </a>
+                </div>
+                <!-- Sidebar Navigation Menu -->
+            </div>
+        </div>
+        <!-- Sidebar left -->
+
+            <!--Content right-->
+            <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
+                <h5 class="mb-3"><strong>Data Admin</strong></h5>
+                
+                <div class="mt-4 mb-4 p-3 bg-white border shadow-sm lh-sm">
+                    <div class="product-list">
+                        <div class="row border-bottom mb-4">
+                            <div class="col-sm-8 pt-2"><h6 class="mb-4 bc-header">Daftar Admin</h6></div>
+                            <div class="col-sm-4 text-right pb-3">
+                                <button class="btn btn-round btn-theme" data-toggle="modal" data-target="#tambahAdminModal">
+                                    <i class="fa fa-plus"></i> Tambah Admin
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive product-list">
+                            <table class="table table-bordered table-striped mt-3" id="productList">
+                                <thead>
+                                    <tr>
+                                        <th>Foto</th>
+                                        <th>ID</th>
+                                        <th>Nama</th>
+                                        <th>Email</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data admin akan diisi di sini menggunakan JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Content right-->
+
+            <!--Footer-->
+
+        </div>
+
+        <!--Main Content-->
+        
+
+    </div>
+     <!-- Footer -->
+     <footer class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <p>&copy; 2023 SIM Daftar Alumni. Hak Cipta Dilindungi.</p>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline float-md-right">
+                        <li class="list-inline-item"><a href="#">Kebijakan Privasi</a></li>
+                        <li class="list-inline-item"><a href="#">Syarat dan Ketentuan</a></li>
+                        <li class="list-inline-item"><a href="#">Kontak</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <!--Page Wrapper-->
+
+    <!-- Page JavaScript Files-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <!--Popper JS-->
+    <script src="assets/js/popper.min.js"></script>
+    <!--Bootstrap-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--Sweet alert JS-->
+    <script src="assets/js/sweetalert.js"></script>
+    <!--Progressbar JS-->
+    <script src="assets/js/progressbar.min.js"></script>
+    <!--Flot.JS-->
+    <script src="assets/js/charts/jquery.flot.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.pie.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.categories.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.stack.min.js"></script>
+    <!--Chart JS-->
+    <script src="assets/js/charts/chart.min.js"></script>
+    <!--Chartist JS-->
+    <script src="assets/js/charts/chartist.min.js"></script>
+    <script src="assets/js/charts/chartist-data.js"></script>
+    <script src="assets/js/charts/demo.js"></script>
+    <!--Maps-->
+    <script src="assets/js/maps/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/js/maps/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/js/maps/jvector-maps.js"></script>
+    <!--Bootstrap Calendar JS-->
+    <script src="assets/js/calendar/bootstrap_calendar.js"></script>
+    <script src="assets/js/calendar/demo.js"></script>
+    <!--Nice select-->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+
+    <!--Custom Js Script-->
+    <script src="assets/js/custom.js"></script>
+    <!--Custom Js Script-->
+    <script>
+        //Nice select
+        $('.bulk-actions').niceSelect();
+    </script>
+
+    <!-- Modal Tambah Admin -->
+    <div class="modal fade" id="tambahAdminModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Admin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formTambahAdmin">
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control" id="nama" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="password" class="form-control" id="password" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" onclick="tambahAdmin()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit Admin -->
+    <div class="modal fade" id="editAdminModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Admin</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditAdmin">
+                        <input type="hidden" id="editId">
+                        <div class="form-group">
+                            <label for="editNama">Nama</label>
+                            <input type="text" class="form-control" id="editNama" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editEmail">Email</label>
+                            <input type="email" class="form-control" id="editEmail" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" onclick="editAdmin()">Simpan Perubahan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data admin untuk tabel di sini (contoh)
+        const adminData = [
+            { id: 1, nama: "Admin Satu", email: "admin1@example.com", foto: "admin1.jpeg" },
+            { id: 2, nama: "Admin Dua", email: "admin2@example.com", foto: "admin2.jpeg" },
+            { id: 3, nama: "Admin Tiga", email: "admin3@example.com", foto: "admin3.jpeg" },
+            // Tambahkan data admin lainnya sesuai kebutuhan
+        ];
+
+        function populateAdminTable() {
+            const tableBody = document.querySelector("#productList tbody");
+            tableBody.innerHTML = "";
+
+            adminData.forEach(admin => {
+                const row = `
+                    <tr>
+                        <td><img src="assets/img/${admin.foto}" alt="${admin.nama}" class="admin-img"></td>
+                        <td>${admin.id}</td>
+                        <td>${admin.nama}</td>
+                        <td>${admin.email}</td>
+                        <td>
+                            <a href="detail-admin.html?id=${admin.id}" class="btn btn-theme btn-sm"><i class="fa fa-eye"></i></a>
+                            <button class="btn btn-success btn-sm" data-toggle="modal" data-target="#editAdminModal" onclick="setEditData(${admin.id}, '${admin.nama}', '${admin.email}')"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-danger btn-sm" onclick="hapusAdmin(${admin.id})"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function tambahAdmin() {
+            // Implementasi logika untuk menambah admin
+            alert('Fungsi tambah admin akan diimplementasikan di sini');
+        }
+
+        function setEditData(id, nama, email) {
+            document.getElementById('editId').value = id;
+            document.getElementById('editNama').value = nama;
+            document.getElementById('editEmail').value = email;
+        }
+
+        function editAdmin() {
+            // Implementasi logika untuk mengedit admin
+            alert('Fungsi edit admin akan diimplementasikan di sini');
+        }
+
+        function hapusAdmin(id) {
+            // Implementasi logika untuk menghapus admin
+            if (confirm('Apakah Anda yakin ingin menghapus admin ini?')) {
+                alert('Admin dengan ID ' + id + ' akan dihapus');
+            }
+        }
+
+        // Populate table when page loads
+        document.addEventListener('DOMContentLoaded', populateAdminTable);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.getElementById('sidebar');
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+            const content = document.querySelector('.content');
+
+            sidebarCollapse.addEventListener('click', function() {
+                sidebar.classList.toggle('active');
+                content.classList.toggle('active');
+            });
+
+            // Menutup sidebar ketika mengklik di luar sidebar pada layar kecil
+            document.addEventListener('click', function(event) {
+                const isClickInsideSidebar = sidebar.contains(event.target);
+                const isClickInsideButton = sidebarCollapse.contains(event.target);
+
+                if (!isClickInsideSidebar && !isClickInsideButton && window.innerWidth <= 768) {
+                    sidebar.classList.remove('active');
+                    content.classList.remove('active');
+                }
+            });
+        });
+    </script>
+  </body>
+</html>

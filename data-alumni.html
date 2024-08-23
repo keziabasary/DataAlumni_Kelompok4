@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="description" content="" >
+    <meta name="author" content="">
+    <meta name="keywords" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!--Meta Responsive tag-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!--Favicon Icon-->
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <!--Bootstrap CSS-->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <!--Custom style.css-->
+    <link rel="stylesheet" href="assets/css/quicksand.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="assets/css/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.css">
+    <!--Animate CSS-->
+    <link rel="stylesheet" href="assets/css/animate.min.css">
+    <!--Chartist CSS-->
+    <link rel="stylesheet" href="assets/css/chartist.min.css">
+    <!--Map-->
+    <link rel="stylesheet" href="assets/css/jquery-jvectormap-2.0.2.css">
+    <!--Bootstrap Calendar-->
+    <link rel="stylesheet" href="assets/js/calendar/bootstrap_calendar.css">
+    <!--Nice select -->
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <title>Data Alumni - SIM Daftar Alumni</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1030;
+            background-color: #fff;
+            box-shadow: 0 2px 4px rgba(0,0,0,.1);
+            height: 60px;
+        }
+
+        .main-content {
+            display: flex;
+            height: 100vh;
+        }
+
+        .sidebar {
+            width: 25%;
+            height: 100vh;
+            overflow-y: auto;
+            position: fixed;
+            top: 40px;
+            left: 0;
+            bottom: 0;
+            background-color: #f8f9fa;
+            padding: 15px;
+            box-sizing: border-box;
+        }
+
+        .content {
+            flex-grow: 1;
+            margin-left: 25%;
+            padding: 75px 15px 60px;
+            height: 100vh;
+            overflow-y: auto;
+            box-sizing: border-box;
+        }
+
+        .footer {
+            position: fixed;
+            bottom: 0;
+            left: 25%;
+            right: 0;
+            background-color: #f8f9fa;
+            padding: 10px 0;
+            border-top: 1px solid #dee2e6;
+            height: 50px;
+        }
+
+        @media (max-width: 767px) {
+            .sidebar {
+                width: 100%;
+                position: static;
+                height: auto;
+            }
+            .content {
+                margin-left: 0;
+                padding-top: 20px;
+            }
+            .footer {
+                left: 0;
+            }
+        }
+
+        .sidebar-menu-container {
+            display: flex;
+            flex-direction: column;
+            height: 100px;
+        }
+       
+        .sidebar-menu {
+            flex-grow: 1;
+        }
+       
+        .btn-logout {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            text-align: center;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            margin: 10px auto;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            width: 80%;
+            max-width: 150px;
+        }
+       
+        .btn-logout:hover {
+            background-color: #d32f2f;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+        }
+       
+        .btn-logout i {
+            margin-right: 8px;
+        }
+
+        .alumni-img {
+            width: 40px;
+            height: 40px;
+            object-fit: cover;
+            border-radius: 50%;
+        }
+
+        /* Menambahkan style baru untuk mengatur lebar kolom */
+        #alumniList th, #alumniList td {
+            vertical-align: middle;
+        }
+
+        #alumniList th:nth-child(1),
+        #alumniList td:nth-child(1) {
+            width: 60px;
+        }
+
+        #alumniList th:last-child,
+        #alumniList td:last-child {
+            width: 135px;
+            text-align: center;
+        }
+
+        #alumniList .btn-sm {
+            padding: 0.25rem 0.4rem;
+            font-size: 0.75rem;
+            margin: 0 1px;
+        }
+    </style>
+  </head>
+  <body>
+    <!--Page loader-->
+    <div class="loader-wrapper">
+        <div class="loader-circle">
+            <div class="loader-wave"></div>
+        </div>
+    </div>
+    
+    <!--Page Wrapper-->
+    <div class="container-fluid d-flex flex-column min-vh-100">
+
+        <!--Header-->
+        <div class="row header shadow-sm">
+            
+            <!--Logo-->
+            <div class="col-sm-3 pl-0 text-center header-logo">
+               <div class="bg-theme mr-3 pt-3 pb-2 mb-0">
+                    <h3 class="logo"><a href="#" class="text-secondary logo"><i class="fa fa-rocket"></i> Sim Alumni <span class="small">admin</span></a></h3>
+               </div>
+            </div>
+            <!--Logo-->
+
+            <!--Header Menu-->
+            <div class="col-sm-9 header-menu pt-2 pb-0">
+                <div class="row">
+                    
+                    <!--Menu Icons-->
+
+                    <!--Search box and avatar-->
+                </div>    
+            </div>
+            <!--Header Menu-->
+        </div>
+        <!--Header-->
+
+        <!--Main Content-->
+        <div class="row main-content flex-grow-1">
+            <!--Sidebar left-->
+            <div class="sidebar pl-0">
+                <div class="inner-sidebar mr-4">
+                    <!--untuk foto admin di menu sidebar-->
+                    <div class="avatar text-center">
+                        <img src="assets/img/admin3.jpeg" alt="" class="rounded-circle" />
+                        <p><strong>Kemas</strong></p>
+                        
+                    </div>
+                    <!--Image Avatar-->
+
+                    <!--Sidebar Navigation Menu-->
+                    <div class="sidebar-menu-container">
+                        <ul class="sidebar-menu mt-4 mb-4">
+                            <li class="parent">
+                                <a href="index.html"><i class="fa fa-tachometer mr-3"> </i>
+                                    <span class="none">Dashboard</span>
+                                </a>
+                               
+                            </li>
+                            <li class="parent">
+                                <a href="data-admin.html"><i class="fa fa-users mr-3"> </i>
+                                    <span class="none">Data Admin</span>
+                                </a>
+                               
+                            </li>
+                            <li class="parent">
+                                <a href="data-user.html"><i class="fa fa-users mr-3"> </i>
+                                    <span class="none">Data User</span>
+                                </a>
+                               
+                            </li>
+                            <li class="parent">
+                                <a href="data-alumni.html" class="active"><i class="fa fa-graduation-cap mr-3"> </i>
+                                    <span class="none">Data Alumni</span>
+                                </a>
+                               
+                            </li>
+                            
+                            <li class="parent">
+                                <a href="album-alumni.html"><i class="fa fa-image mr-3"> </i>
+                                    <span class="none">Album alumni</span>
+                                </a>
+                               
+                            </li>
+                            
+                        </ul>
+                        <a href="landingpage.html" class="btn-logout text-white">
+                            <i class="fas fa-sign-out-alt"></i>Logout
+                        </a>
+                    </div>
+                    <!--Sidebar Naigation Menu-->
+                </div>
+            </div>
+            <!--Sidebar left-->
+
+            <!--Content right-->
+            <div class="col-sm-9 col-xs-12 content pt-3 pl-0">
+                <h5 class="mb-3"><strong>Data Alumni</strong></h5>
+                <form class="d-none d-md-inline-block form-inline ms-auto me-0 me-md-3 my-2 my-md-0">
+                    <div class="input-group">
+                        <input class="form-control" type="text" placeholder="Search for..." aria-label="Search for..." aria-describedby="btnNavbarSearch" />
+                        <button class="btn btn-primary" id="btnNavbarSearch" type="button"><i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+                
+                <div class="mt-4 mb-4 p-3 bg-white border shadow-sm lh-sm">
+                    <div class="product-list">
+                        <div class="row border-bottom mb-4">
+                            <div class="col-sm-8 pt-2"><h6 class="mb-4 bc-header">Daftar Alumni</h6></div>
+                            <div class="col-sm-4 text-right pb-3">
+                                <button class="btn btn-round btn-theme" data-toggle="modal" data-target="#tambahAlumniModal">
+                                    <i class="fa fa-plus"></i> Tambah Alumni
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="table-responsive product-list">
+                            <table class="table table-bordered table-striped mt-1" id="alumniList">
+                                <thead>
+                                    <tr>
+                                        <th>Foto</th>
+                                        <th>Nama</th>
+                                        <th>Angkatan</th>
+                                        <th>Jurusan</th>
+                                        <th>Aksi</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Data alumni akan diisi di sini menggunakan JavaScript -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--Content right-->
+
+            <!--Footer-->
+            <footer class="footer">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <p>&copy; 2023 SIM Daftar Alumni. Hak Cipta Dilindungi.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-inline float-md-right">
+                                <li class="list-inline-item"><a href="#">Kebijakan Privasi</a></li>
+                                <li class="list-inline-item"><a href="#">Syarat dan Ketentuan</a></li>
+                                <li class="list-inline-item"><a href="#">Kontak</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+        <!--Main Content-->
+
+    </div>
+    <!--Page Wrapper-->
+
+    <!-- Page JavaScript Files-->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/jquery-1.12.4.min.js"></script>
+    <!--Popper JS-->
+    <script src="assets/js/popper.min.js"></script>
+    <!--Bootstrap-->
+    <script src="assets/js/bootstrap.min.js"></script>
+    <!--Sweet alert JS-->
+    <script src="assets/js/sweetalert.js"></script>
+    <!--Progressbar JS-->
+    <script src="assets/js/progressbar.min.js"></script>
+    <!--Flot.JS-->
+    <script src="assets/js/charts/jquery.flot.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.pie.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.categories.min.js"></script>
+    <script src="assets/js/charts/jquery.flot.stack.min.js"></script>
+    <!--Chart JS-->
+    <script src="assets/js/charts/chart.min.js"></script>
+    <!--Chartist JS-->
+    <script src="assets/js/charts/chartist.min.js"></script>
+    <script src="assets/js/charts/chartist-data.js"></script>
+    <script src="assets/js/charts/demo.js"></script>
+    <!--Maps-->
+    <script src="assets/js/maps/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="assets/js/maps/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="assets/js/maps/jvector-maps.js"></script>
+    <!--Bootstrap Calendar JS-->
+    <script src="assets/js/calendar/bootstrap_calendar.js"></script>
+    <script src="assets/js/calendar/demo.js"></script>
+    <!--Nice select-->
+    <script src="assets/js/jquery.nice-select.min.js"></script>
+
+    <!--Custom Js Script-->
+    <script src="assets/js/custom.js"></script>
+    <!--Custom Js Script-->
+    <script>
+        //Nice select
+        $('.bulk-actions').niceSelect();
+    </script>
+
+    <!-- Modal Tambah Alumni -->
+    <div class="modal fade" id="tambahAlumniModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Tambah Alumni</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formTambahAlumni">
+                        <div class="form-group">
+                            <label for="nama">Nama</label>
+                            <input type="text" class="form-control" id="nama" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="angkatan">Angkatan</label>
+                            <input type="number" class="form-control" id="angkatan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="jurusan">Jurusan</label>
+                            <select class="form-control" id="jurusan" required>
+                                <option value="">Pilih Jurusan</option>
+                                <option value="IPA">IPA</option>
+                                <option value="IPS">IPS</option>
+                                <option value="Bahasa">Bahasa</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="foto">Foto</label>
+                            <input type="file" class="form-control-file" id="foto" accept="image/*" required>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" onclick="tambahAlumni()">Simpan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit Alumni -->
+    <div class="modal fade" id="editAlumniModal" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Alumni</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form id="formEditAlumni">
+                        <input type="hidden" id="editId">
+                        <div class="form-group">
+                            <label for="editNama">Nama</label>
+                            <input type="text" class="form-control" id="editNama" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editAngkatan">Angkatan</label>
+                            <input type="number" class="form-control" id="editAngkatan" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="editJurusan">Jurusan</label>
+                            <select class="form-control" id="editJurusan" required>
+                                <option value="">Pilih Jurusan</option>
+                                <option value="IPA">Manajemen Informatika</option>
+                                <option value="IPS">Teknik Sipil</option>
+                                <option value="Bahasa">Teknik Listrik</option>
+                                <option value="Bahasa">Teknik Mesin</option>
+                                <option value="Bahasa">Agroindustri</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="editFoto">Foto</label>
+                            <input type="file" class="form-control-file" id="editFoto" accept="image/*">
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    <button type="button" class="btn btn-primary" onclick="editAlumni()">Simpan Perubahan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Data alumni (contoh)
+        const alumniData = [
+            { id: 1, nama: "Agung Firmansyah", angkatan: 2020, jurusan: "Teknik Listrik", foto: "satu.jpeg" },
+            { id: 2, nama: "Roberth Wija", angkatan: 2019, jurusan: "Agroindustri", foto: "dua.jpeg" },
+            { id: 3, nama: "Santia Eka", angkatan: 2018, jurusan: "Manajemen Informatika", foto: "tiga.jpeg" },
+            { id: 4, nama: "Ardiasnyah Ramli", angkatan: 2020, jurusan: "Teknik Sipil", foto: "empat.jpeg" },
+            { id: 5, nama: "Nazwa Afiqa", angkatan: 2019, jurusan: "Teknik Sipil", foto: "lima.jpeg" },
+            { id: 6, nama: "Nurul Ramadhani", angkatan: 2018, jurusan: "Teknik Mesin", foto: "enam.jpeg" },
+            { id: 7, nama: "Michelle Anggriany", angkatan: 2020, jurusan: "Manajemen Informatika", foto: "tuju.jpeg" },
+            { id: 8, nama: "Elvira Fitriani", angkatan: 2019, jurusan: "Agroindustri", foto: "delapan.jpeg" },
+            { id: 9, nama: "Rizkia Reza", angkatan: 2018, jurusan: "Manajemen Informatika", foto: "sembilan.jpeg" },
+            { id: 10, nama: "Lulu Istiqoma", angkatan: 2020, jurusan: "Teknik Mesin", foto: "sepuluh.jpeg" },
+            { id: 11, nama: "Cindy Petronela", angkatan: 2019, jurusan: "Teknik Listrik", foto: "sebelas.jpeg" },
+            { id: 12, nama: "Nurul Sakinah", angkatan: 2018, jurusan: "Agroindustri", foto: "duabelas.jpeg" },
+            { id: 13, nama: "Fadil Jaidi", angkatan: 2020, jurusan: "Teknik Sipil", foto: "tigabelas.jpeg" },
+            { id: 14, nama: "Angkasa Samuel", angkatan: 2019, jurusan: "Majemen Informatika", foto: "empatbelas.jpeg" },
+            { id: 15, nama: "Karel Marthin", angkatan: 2018, jurusan: "Teknik Mesin", foto: "limabelas.jpeg" },
+            { id: 16, nama: "Michael Claus", angkatan: 2020, jurusan: "Teknik Listrik", foto: "enambelas.jpeg" },
+            { id: 17, nama: "Adhyaksa Perkasa", angkatan: 2019, jurusan: "Manajemen Informatika", foto: "tujubelas.jpeg" },
+            { id: 18, nama: "Lionel Messi", angkatan: 2018, jurusan: "Agroindusti", foto: "lapanbelas.jpeg" }
+        ];
+
+        function populateAlumniTable() {
+            const tableBody = document.querySelector("#alumniList tbody");
+            tableBody.innerHTML = "";
+
+            alumniData.forEach(alumni => {
+                const row = `
+                    <tr>
+                        <td><img src="assets/img/dataalumi/${alumni.foto}" alt="${alumni.nama}" class="alumni-img"></td>
+                        <td>${alumni.nama}</td>
+                        <td>${alumni.angkatan}</td>
+                        <td>${alumni.jurusan}</td>
+                        <td>
+                            <a href="detail-alumni.html?id=${alumni.id}" class="btn btn-info btn-sm" title="Lihat Detail"><i class="fa fa-eye"></i></a>
+                            <button class="btn btn-warning btn-sm" onclick="showEditModal(${alumni.id})" title="Edit"><i class="fa fa-edit"></i></button>
+                            <button class="btn btn-danger btn-sm" onclick="hapusAlumni(${alumni.id})" title="Hapus"><i class="fa fa-trash"></i></button>
+                        </td>
+                    </tr>
+                `;
+                tableBody.innerHTML += row;
+            });
+        }
+
+        function tambahAlumni() {
+            // Implementasi logika untuk menambah alumni
+            alert('Fungsi tambah alumni akan diimplementasikan di sini');
+            $('#tambahAlumniModal').modal('hide');
+        }
+
+        function showEditModal(id) {
+            const alumni = alumniData.find(a => a.id === id);
+            if (alumni) {
+                document.getElementById('editId').value = alumni.id;
+                document.getElementById('editNama').value = alumni.nama;
+                document.getElementById('editAngkatan').value = alumni.angkatan;
+                document.getElementById('editJurusan').value = alumni.jurusan;
+                $('#editAlumniModal').modal('show');
+            }
+        }
+
+        function editAlumni() {
+            // Implementasi logika untuk mengedit alumni
+            alert('Fungsi edit alumni akan diimplementasikan di sini');
+            $('#editAlumniModal').modal('hide');
+        }
+
+        function hapusAlumni(id) {
+            if (confirm('Apakah Anda yakin ingin menghapus alumni ini?')) {
+                // Implementasi logika untuk menghapus alumni
+                alert(`Alumni dengan ID ${id} akan dihapus`);
+            }
+        }
+
+        // Populate table when page loads
+        document.addEventListener('DOMContentLoaded', populateAlumniTable);
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebar = document.querySelector('.sidebar');
+            const sidebarCollapse = document.getElementById('sidebarCollapse');
+            const content = document.querySelector('.content');
+
+            if (sidebarCollapse) {
+                sidebarCollapse.addEventListener('click', function() {
+                    sidebar.classList.toggle('active');
+                    content.classList.toggle('active');
+                });
+
+                // Menutup sidebar ketika mengklik di luar sidebar pada layar kecil
+                document.addEventListener('click', function(event) {
+                    const isClickInsideSidebar = sidebar.contains(event.target);
+                    const isClickInsideButton = sidebarCollapse.contains(event.target);
+
+                    if (!isClickInsideSidebar && !isClickInsideButton && window.innerWidth <= 768) {
+                        sidebar.classList.remove('active');
+                        content.classList.remove('active');
+                    }
+                });
+            }
+        });
+    </script>
+  </body>
+</html>

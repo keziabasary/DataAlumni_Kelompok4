@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Informasi Data Alumni</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <div class="logo">
+                <h1>AlumniKu</h1>
+            </div>
+            <ul>
+                <li><a href="#beranda">Beranda</a></li>
+                <li><a href="#tentang">Laporan</a></li>
+                <li><a href="#fitur">Berita</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+                <li><a href="login.html">Login</a>
+            </ul>
+        </nav>
+    </header>
+
+    
+    <!-- Bagian Beranda -->
+    <section id="beranda">
+        <div class="hero">
+            <h1>Selamat Datang di Sistem Informasi Data Alumni</h1>
+            <p>Menghubungkan alumni dan membangun jaringan yang kuat</p>
+            <a href="login.html" class="btn">Mulai Sekarang</a>
+        </div>
+    </section>
+
+    <!-- Bagian Tentang -->
+    <section id="tentang">
+        <h2>LAPORAN</h2>
+        <p><b>Laporan Data Alumni:
+
+            Laporan Berdasarkan Tahun Lulusan: Menampilkan data alumni yang lulus berdasarkan tahun tertentu.
+            <br>Laporan Berdasarkan Program Studi: Menampilkan data alumni berdasarkan program studi yang mereka ambil.
+            <br>Laporan Berdasarkan Pekerjaan: Menampilkan statistik pekerjaan alumni seperti jumlah yang bekerja di bidang tertentu.
+            <br>Laporan Berdasarkan Wilayah: Menampilkan sebaran alumni berdasarkan lokasi mereka saat ini (misalnya, berdasarkan kota atau negara).
+
+
+            <br>Laporan Statistik Alumni:
+            
+            <br>Statistik Alumni Aktif: Menampilkan jumlah alumni yang masih aktif dalam komunitas atau jaringan alumni.
+            <br>Statistik Alumni yang Melanjutkan Studi: Menampilkan data alumni yang melanjutkan pendidikan ke jenjang yang lebih tinggi.
+            <br>Statistik Alumni yang Berwirausaha: Menampilkan jumlah alumni yang memiliki bisnis sendiri.</b></p>
+    </section>
+
+    <!-- Bagian Fitur -->
+    <section id="fitur">
+        <h2>BERITA</h2>
+        <div class="fitur-container">
+            <div class="fitur-item">
+                <h3>Kegiatan Sosial Alumni</h3>
+                <p>Alumni Gelar Bakti Sosial di Wilayah Terdampak Bencana
+                    Komunitas alumni baru-baru ini menyelenggarakan kegiatan bakti sosial 
+                    di wilayah yang terdampak banjir di Kabupaten Bekasi. 
+                    Kegiatan ini meliputi distribusi bantuan, layanan kesehatan gratis, 
+                    dan pendirian posko bantuan. Terima kasih kepada seluruh alumni yang 
+                    telah terlibat dalam kegiatan mulia ini.</p>
+            </div>
+            <div class="fitur-item">
+                <h3>Webinar Seri Alumni</h3>
+                <p>Inovasi Teknologi di Era Digita
+                    Alumni berkesempatan untuk mengikuti webinar eksklusif dengan tema 
+                    'Inovasi Teknologi di Era Digital'. Webinar ini akan menampilkan pembicara 
+                    alumni yang bekerja di perusahaan teknologi terkemuka, membahas tren terbaru 
+                    dan peluang karier di industri teknologi.</p>
+            </div>
+            <div class="fitur-item">
+                <h3>Program Beasiswa Alumni</h3>
+                <p>Donasi Alumni Mendukung Beasiswa Mahasiswa Berprestasi
+                Program Beasiswa Alumni tahun ini berhasil mengumpulkan dana sebesar Rp500 juta, 
+                yang akan disalurkan untuk mendukung mahasiswa berprestasi yang membutuhkan. 
+                Terima kasih kepada para alumni yang telah berkontribusi. Dana ini akan membantu 
+                banyak mahasiswa untuk mencapai impian mereka dan melanjutkan pendidikan ke jenjang 
+                yang lebih tinggi."</p>
+            </div>
+            <div class="fitur-item">
+                <h3>Peluncuran Portal Karier Alumni</h3>
+                <p>Portal Karier Alumni Resmi Diluncurkan
+                    Kami dengan bangga mempersembahkan Portal Karier Alumni, 
+                    sebuah platform online baru yang dirancang untuk membantu alumni 
+                    mencari peluang kerja, magang, dan program mentorship. Dengan berbagai fitur
+                    seperti pencarian pekerjaan, bursa kerja alumni, dan artikel pengembangan karier, 
+                    portal ini bertujuan untuk mendukung perjalanan profesional alumni.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bagian Kontak -->
+    <section id="kontak">
+        <h2>Hubungi Kami</h2>
+        <form>
+            <input type="text" placeholder="Nama Anda" required>
+            <input type="email" placeholder="Email Anda" required>
+            <textarea placeholder="Pesan Anda" required></textarea>
+            <button type="submit" class="btn">Kirim Pesan</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>@2024,Kelompok 4.</p>
+    </footer>
+    <script>
+        // Add smooth scrolling behavior
+        document.querySelectorAll('nav a').forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = e.target.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            targetSection.scrollIntoView({ behavior: 'smooth' });
+          });
+        });
+      </script>
+</body>
+
+</html>
